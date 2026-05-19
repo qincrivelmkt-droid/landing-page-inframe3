@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ebook Meta Ads Copia e Cola — Campanha de Leads do Zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --bg2: #141414;
+    --bg3: #1a1a1a;
+    --orange: #FF6200;
+    --orange-light: #FF8A3D;
+    --yellow: #FFD600;
+    --white: #FFFFFF;
+    --gray: #888888;
+    --gray-light: #CCCCCC;
+    --border: #2a2a2a;
+    --green: #00C853;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── UTILS ── */
+  .container { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+  .tag {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  .tag-yellow {
+    background: var(--yellow);
+    color: #000;
+  }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 8vw, 56px);
+    line-height: 1.05;
+    letter-spacing: 1px;
+  }
+  h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.3;
+  }
+  p { color: var(--gray-light); line-height: 1.7; }
+  .section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+
+  /* ── URGENCY BAR ── */
+  .urgency-bar {
+    background: var(--orange);
+    text-align: center;
+    padding: 10px 20px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .urgency-bar span { font-weight: 400; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 60px 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,98,0,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 12vw, 88px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero h1 .yellow { color: var(--yellow); }
+  .hero-sub {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray-light);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+  .hero-sub strong { color: var(--white); }
+
+  /* ── PROOF BAR ── */
+  .proof-bar {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    text-align: center;
+  }
+  .proof-item .number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--orange);
+    line-height: 1;
+    display: block;
+  }
+  .proof-item .label {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 4px;
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── PRINT PLACEHOLDER ── */
+  .print-card {
+    background: var(--bg3);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    margin: 24px 0;
+    position: relative;
+  }
+  .print-card img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+  }
+  .print-placeholder {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--gray);
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .print-placeholder .icon { font-size: 32px; }
+  .print-badge {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  /* ── CTA BUTTON ── */
+  .btn-cta {
+    display: block;
+    width: 100%;
+    background: var(--orange);
+    color: #fff;
+    text-align: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    padding: 20px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.08);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .btn-cta:hover { background: var(--orange-light); transform: translateY(-2px); }
+  .btn-cta:hover::after { opacity: 1; }
+  .btn-micro {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 0;
+  }
+  .btn-micro span { color: var(--green); font-weight: 600; }
+
+  /* ── TIMER ── */
+  .timer-wrap {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 32px 0;
+    text-align: center;
+  }
+  .timer-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .timer-digits {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  .timer-block { text-align: center; }
+  .timer-block .digit {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: block;
+    min-width: 72px;
+  }
+  .timer-block .unit {
+    font-size: 11px;
+    color: var(--gray);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  /* ── PAIN LIST ── */
+  .pain-list { list-style: none; margin: 24px 0; }
+  .pain-list li {
+    padding: 14px 16px 14px 48px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--gray-light);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .pain-list li:last-child { border-bottom: none; }
+  .pain-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 16px;
+    color: #ff4444;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* ── ABOUT ── */
+  .about-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 32px 0;
+  }
+  .about-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .about-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .about-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .about-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .about-role { font-size: 13px; color: var(--orange); margin-top: 2px; }
+  .about-card p { font-size: 15px; }
+
+  /* ── BENEFITS ── */
+  .benefit-list { list-style: none; margin: 24px 0; }
+  .benefit-list li {
+    padding: 16px 16px 16px 52px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--gray-light);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .benefit-list li:last-child { border-bottom: none; }
+  .benefit-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 16px;
+    color: var(--green);
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .benefit-list li strong { color: var(--white); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonial-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--orange);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+  .testimonial-text {
+    font-size: 15px;
+    color: var(--gray-light);
+    font-style: italic;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .testimonial-author {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--white);
+  }
+  .testimonial-handle { font-size: 12px; color: var(--orange); margin-top: 2px; }
+  .stars { color: var(--yellow); font-size: 14px; margin-bottom: 10px; }
+
+  /* ── OFFER STACK ── */
+  .offer-box {
+    background: var(--bg3);
+    border: 1px solid var(--orange);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 32px 0;
+  }
+  .offer-header {
+    background: var(--orange);
+    padding: 16px 24px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .offer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .offer-item:last-of-type { border-bottom: none; }
+  .offer-item-name { font-size: 14px; color: var(--gray-light); flex: 1; }
+  .offer-item-name strong { color: var(--white); display: block; margin-bottom: 2px; }
+  .offer-item-value {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--gray);
+    text-decoration: line-through;
+    white-space: nowrap;
+  }
+  .offer-total {
+    background: var(--bg);
+    padding: 20px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .offer-original {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+  .offer-original span { text-decoration: line-through; }
+  .offer-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .offer-price-sub {
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 4px;
+  }
+  .offer-price-sub strong { color: var(--yellow); }
+
+  /* ── OBJECTIONS ── */
+  .objection-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+  .objection-q {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .objection-a { font-size: 15px; color: var(--gray-light); }
+  .objection-a strong { color: var(--white); }
+
+  /* ── GUARANTEE ── */
+  .guarantee-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 24px;
+    text-align: center;
+    margin: 32px 0;
+  }
+  .guarantee-icon { font-size: 52px; margin-bottom: 16px; }
+  .guarantee-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--green);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  .guarantee-text { font-size: 15px; color: var(--gray-light); max-width: 480px; margin: 0 auto; }
+
+  /* ── FAQ ── */
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .faq-q {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--white);
+    margin-bottom: 10px;
+    padding-right: 24px;
+  }
+  .faq-a { font-size: 14px; color: var(--gray-light); line-height: 1.6; }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 72px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(circle, rgba(255,98,0,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .final-cta h2 { margin-bottom: 16px; }
+  .final-cta p { margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+  /* ── PS ── */
+  .ps-block {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    text-align: center;
+  }
+  .ps-text {
+    font-size: 14px;
+    color: var(--gray);
+    max-width: 520px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+  }
+  .ps-text strong { color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * { animation: fadeUp 0.6s ease both; }
+  .hero .hero-eyebrow { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero .hero-sub { animation-delay: 0.3s; }
+  .proof-bar { animation-delay: 0.4s; }
+  .hero .btn-cta { animation-delay: 0.5s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .proof-bar { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .proof-item .number { font-size: 30px; }
+    .proof-item .label { font-size: 10px; }
+    .timer-block .digit { font-size: 38px; min-width: 56px; padding: 6px 10px; }
+    .offer-price { font-size: 44px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  ⚡ PREÇO DE LANÇAMENTO — <span>R$27,90 por tempo limitado</span> — sobe para R$97
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Para fotógrafos e profissionais de eventos</div>
+    <h1>
+      COMO GEREI<br>
+      <span class="accent">92 LEADS</span><br>
+      PAGANDO<br>
+      <span class="yellow">R$1,75</span><br>
+      SEM GESTOR
+    </h1>
+    <p class="hero-sub">
+      Print a print. Passo a passo.<br>
+      <strong>Sem precisar entender nada de tráfego.</strong>
+    </p>
+
+    <!-- PROOF BAR -->
+    <div class="proof-bar">
+      <div class="proof-item">
+        <span class="number">92</span>
+        <span class="label">Leads gerados</span>
+      </div>
+      <div class="proof-item">
+        <span class="number">R$1,75</span>
+        <span class="label">Menor custo/lead</span>
+      </div>
+      <div class="proof-item">
+        <span class="number">7</span>
+        <span class="label">Dias de campanha</span>
+      </div>
+    </div>
+
+    <!-- PRINT META ADS -->
+    <div class="print-card">
+      <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/landing-page-meta/main/WhatsApp%20Image%202026-05-16%20at%2001.29.33.jpeg" alt="Print real do Meta Ads — resultado das campanhas">
+    </div>
+
+    <a href="https://chk.eduzz.com/39VK8D67WR" class="btn-cta">QUERO MEU ACESSO AGORA →</a>
+    <p class="btn-micro"><span>✓ Acesso imediato</span> &nbsp;•&nbsp; Garantia de 7 dias &nbsp;•&nbsp; Pagamento seguro</p>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="section">
+  <div class="container">
+    <div class="tag">Você se identifica?</div>
+    <h2>ISSO AINDA<br>ACONTECE<br>COM VOCÊ?</h2>
+    <ul class="pain-list" style="margin-top:32px">
+      <li>Você posta foto de casamento todo domingo e o direct fica vazio</li>
+      <li>Já tentou abrir o Meta Ads e travou na primeira tela</li>
+      <li>Pagou gestor, não teve retorno e ficou no prejuízo</li>
+      <li>Não tem dinheiro pra pagar R$1.500/mês pra alguém que não garante nada</li>
+      <li>Não sabe de onde vem o próximo cliente — e isso te deixa ansioso</li>
+      <li>Vê outros profissionais cheios de agenda e não entende como</li>
+    </ul>
+    <p style="margin-top:24px; font-size:15px">Se você se identificou com pelo menos um desses, esse ebook foi feito exatamente pra você.</p>
+  </div>
+</section>
+
+<!-- SOLUÇÃO / AUTORIDADE -->
+<section class="section">
+  <div class="container">
+    <div class="tag">Quem criou isso</div>
+    <h2>EU VIVI<br>ESSE PROBLEMA.<br>E RESOLVI.</h2>
+    <div class="about-card" style="margin-top:32px">
+      <div class="about-header">
+        <div class="about-avatar">👨‍💻</div>
+        <!-- SUBSTITUA o emoji por: <div class="about-avatar"><img src="SUA_FOTO.jpg" alt="Lucas"></div> -->
+        <div>
+          <div class="about-name">Lucas Rosa Dias</div>
+          <div class="about-role">Gestor de Tráfego • Fundador da Inframe | Polaroid</div>
+        </div>
+      </div>
+      <p style="font-size:15px; margin-bottom:16px">
+        Sou gestor de tráfego e fundador da Inframe | Polaroid, empresa de experiências de fotos instantâneas para casamentos. Estruturei as campanhas da minha própria empresa no Meta Ads com orçamento controlado — e o resultado foi esse:
+      </p>
+      <div class="proof-bar" style="margin:0 0 16px">
+        <div class="proof-item">
+          <span class="number" style="font-size:28px">92</span>
+          <span class="label">Leads em menos de 1 semana</span>
+        </div>
+        <div class="proof-item">
+          <span class="number" style="font-size:28px">3</span>
+          <span class="label">Campanhas abaixo de R$5</span>
+        </div>
+        <div class="proof-item">
+          <span class="number" style="font-size:28px">R$1,75</span>
+          <span class="label">Menor custo por lead</span>
+        </div>
+      </div>
+      <p style="font-size:14px; color: var(--gray)">Depois disso, percebi que a maioria dos fotógrafos e profissionais de evento nunca vai ter acesso a esse conhecimento — porque ninguém ensina de forma simples. Então criei esse ebook.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EBOOK PREVIEW / PRINTS -->
+<section class="section">
+  <div class="container">
+    <div class="tag">Veja como funciona</div>
+    <h2>COPIA E COLA.<br>LITERALMENTE.</h2>
+    <p style="margin:16px 0 32px">Cada etapa do ebook tem um print real do lado. Você abre, vê a tela, replica na sua conta. Sem enrolação.</p>
+
+    <div class="print-card">
+      <!-- INSERIR PRINT 1 DO EBOOK (objetivo leads) -->
+      <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/landing-page-meta/main/19.png" alt="Print do ebook — Tela de objetivo Leads">
+    </div>
+
+    <div class="print-card">
+      <!-- INSERIR PRINT 2 DO EBOOK (público) -->
+      <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/landing-page-meta/main/4.png" alt="Print do ebook — Tela de público">
+    </div>
+
+    <div class="print-card">
+      <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/landing-page-meta/main/8.png" alt="Print do ebook — Configuração do anúncio">
+    </div>
+
+    <p style="text-align:center; font-size:13px; color:var(--gray); margin-top:8px">E mais vários passos documentados com prints reais até o anúncio no ar.</p>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="section">
+  <div class="container">
+    <div class="tag">O que você ganha</div>
+    <h2>O QUE<br>MUDA NA<br>SUA VIDA</h2>
+    <ul class="benefit-list" style="margin-top:32px">
+      <li><strong>Você lança sua campanha hoje</strong> — mesmo sem nunca ter aberto o Meta Ads</li>
+      <li><strong>Você para de depender do orgânico</strong> e passa a ter previsibilidade de clientes todo mês</li>
+      <li><strong>Você economiza R$1.500+ por mês</strong> que pagaria a um gestor sem garantia</li>
+      <li><strong>Você sabe exatamente o que clicar</strong> em cada tela — com o print do lado pra comparar</li>
+      <li><strong>Você atrai leads qualificados</strong> — pessoas interessadas no seu serviço, não seguidores aleatórios</li>
+      <li><strong>Você tem controle do negócio</strong> — sem depender de ninguém pra crescer</li>
+      <li><strong>Você estrutura do zero</strong> uma campanha com objetivo Lead até o anúncio no ar</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section class="section">
+  <div class="container">
+    <div class="tag">Prova social</div>
+    <h2>QUEM JÁ<br>COMPROU<br>NOSSOS<br>EBOOKS</h2>
+
+    <div class="print-card" style="margin: 32px 0 16px">
+      <!-- PRINTS DOS DEPOIMENTOS -->
+      <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/landing-page-meta/main/WhatsApp%20Image%202026-05-18%20at%2000.48.46.jpeg" alt="Depoimento 1" style="width:100%;display:block;border-bottom:1px solid var(--border)">
+      <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/landing-page-meta/main/WhatsApp%20Image%202026-05-18%20at%2000.30.47%20(1).jpeg" alt="Depoimento 2" style="width:100%;display:block;border-bottom:1px solid var(--border)">
+      <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/landing-page-meta/main/WhatsApp%20Image%202026-05-18%20at%2000.24.03%20(3).jpeg" alt="Depoimento 3" style="width:100%;display:block;border-bottom:1px solid var(--border)">
+      <img src="https://raw.githubusercontent.com/qincrivelmkt-droid/landing-page-meta/main/WhatsApp%20Image%202026-05-18%20at%2000.24.03%20(2).jpeg" alt="Depoimento 4" style="width:100%;display:block">
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Já estou lendo o e-book, e está perfeito! Ai gente, muito obrigada. Eu nem sei como agradecer."</p>
+      <div class="testimonial-author">Luana Rincon</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Nunca imaginei que poderia ter renda com isso. A influência de vocês gerou frutos."</p>
+      <div class="testimonial-author">Mylena Côrtes</div>
+      <div class="testimonial-handle">@myinstant.br</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"A cada foto que aparece é uma confirmação: aquilo que estava pensando pode dar certo pra mim assim como está dando para os colegas."</p>
+      <div class="testimonial-author">Fabrício</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Muito obrigada pelo compartilhamento do conhecimento. Juntos sempre chegamos mais longe — o mercado é extenso e tem espaço para todos!"</p>
+      <div class="testimonial-author">Alline Camargo</div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="section" id="oferta">
+  <div class="container">
+    <div class="tag tag-yellow">Oferta especial de lançamento</div>
+    <h2>TUDO QUE<br>VOCÊ LEVA<br>HOJE</h2>
+
+    <div class="offer-box" style="margin-top:32px">
+      <div class="offer-header">📦 O QUE ESTÁ INCLUSO</div>
+      <div class="offer-item">
+        <div class="offer-item-name">
+          <strong>📘 Ebook Principal</strong>
+          Campanha Meta Ads copia e cola com objetivo em Lead — do zero ao anúncio no ar com prints de cada etapa
+        </div>
+        <div class="offer-item-value">R$97</div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-item-name">
+          <strong>📷 Bônus 1 — Ebook Polaroid</strong>
+          Como trabalhar em eventos com fotos instantâneas e faturar com isso
+        </div>
+        <div class="offer-item-value">R$47</div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-item-name">
+          <strong>📊 Bônus 2 — Planilha de Leads</strong>
+          Planilha Excel para organizar e acompanhar todos os leads que você vai captar
+        </div>
+        <div class="offer-item-value">R$27</div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-item-name">
+          <strong>📝 Bônus 3 — Estrutura de Orçamento</strong>
+          Modelo editável para enviar orçamentos profissionais para seus leads
+        </div>
+        <div class="offer-item-value">R$37</div>
+      </div>
+      <div class="offer-total">
+        <div class="offer-original">Valor total: <span>R$208</span></div>
+        <div class="offer-price">R$27,90</div>
+        <div class="offer-price-sub">ou cartão de crédito &nbsp;•&nbsp; <strong>Sobe para R$97 em 7 dias</strong></div>
+      </div>
+    </div>
+
+    <!-- TIMER -->
+    <div class="timer-wrap">
+      <div class="timer-label">⏳ Preço de lançamento termina em</div>
+      <div class="timer-digits">
+        <div class="timer-block">
+          <span class="digit" id="days">00</span>
+          <span class="unit">Dias</span>
+        </div>
+        <div class="timer-block" style="display:flex;align-items:center;padding-bottom:24px">
+          <span style="font-family:'Bebas Neue';font-size:40px;color:var(--gray)">:</span>
+        </div>
+        <div class="timer-block">
+          <span class="digit" id="hours">00</span>
+          <span class="unit">Horas</span>
+        </div>
+        <div class="timer-block" style="display:flex;align-items:center;padding-bottom:24px">
+          <span style="font-family:'Bebas Neue';font-size:40px;color:var(--gray)">:</span>
+        </div>
+        <div class="timer-block">
+          <span class="digit" id="mins">00</span>
+          <span class="unit">Min</span>
+        </div>
+        <div class="timer-block" style="display:flex;align-items:center;padding-bottom:24px">
+          <span style="font-family:'Bebas Neue';font-size:40px;color:var(--gray)">:</span>
+        </div>
+        <div class="timer-block">
+          <span class="digit" id="secs">00</span>
+          <span class="unit">Seg</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://chk.eduzz.com/39VK8D67WR" class="btn-cta">QUERO MEU ACESSO POR R$27,90 — 6x de R$5,07 →</a>
+    <p class="btn-micro"><span>✓ Acesso imediato</span> &nbsp;•&nbsp; <span>✓ Garantia 7 dias</span> &nbsp;•&nbsp; Pagamento seguro</p>
+  </div>
+</section>
+
+<!-- OBJEÇÕES -->
+<section class="section">
+  <div class="container">
+    <div class="tag">Sem desculpa</div>
+    <h2>E SE<br>VOCÊ AINDA<br>ESTIVER<br>EM DÚVIDA</h2>
+
+    <div style="margin-top:32px">
+      <div class="objection-item">
+        <div class="objection-q">"Nunca mexi no Meta Ads, é complicado demais."</div>
+        <div class="objection-a">Esse ebook foi feito <strong>exatamente pra você</strong>. Cada etapa tem um print real do lado. Você não precisa entender tráfego — só precisa seguir.</div>
+      </div>
+      <div class="objection-item">
+        <div class="objection-q">"Pago gestor e não tenho resultado."</div>
+        <div class="objection-a">Com <strong>R$27,90</strong> você aprende a fazer o que o gestor cobra R$1.500 pra fazer. Sem mensalidade. Sem dependência. Com controle total.</div>
+      </div>
+      <div class="objection-item">
+        <div class="objection-q">"Tenho medo de errar na configuração."</div>
+        <div class="objection-a">O ebook mostra tela por tela o que clicar. Se eu consegui gerar leads a <strong>R$1,75</strong> na minha empresa, você consegue seguindo o mesmo caminho.</div>
+      </div>
+      <div class="objection-item">
+        <div class="objection-q">"Não tenho budget pra anunciar."</div>
+        <div class="objection-a">Você pode começar com <strong>R$10 por dia</strong>. O ebook mostra como configurar um orçamento que cabe no seu bolso e ainda gera resultado real.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="section">
+  <div class="container">
+    <div class="guarantee-box">
+      <div class="guarantee-icon">🔒</div>
+      <div class="guarantee-title">GARANTIA DE 7 DIAS</div>
+      <p class="guarantee-text">
+        Se você comprar, ler e achar que não valeu, me manda mensagem em até 7 dias e eu devolvo 100% do seu dinheiro. Sem questionamento. Sem burocracia.<br><br>
+        <strong style="color:var(--white)">O risco é todo meu. Você só perde se não tentar.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="tag">Dúvidas frequentes</div>
+    <h2>PERGUNTAS<br>FREQUENTES</h2>
+    <div style="margin-top:32px">
+      <div class="faq-item">
+        <div class="faq-q">Preciso ter experiência no Meta Ads?</div>
+        <div class="faq-a">Não. O ebook foi criado pra quem nunca abriu a plataforma. Você segue os prints e configura do zero.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Funciona pra fotógrafo, videomaker, guestbook e outros?</div>
+        <div class="faq-a">Sim. O método é focado em campanha com objetivo Lead — funciona pra qualquer profissional que presta serviço em eventos e quer atrair clientes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">E se eu não gostar?</div>
+        <div class="faq-a">Você tem 7 dias de garantia total. Pediu, devolveu. Sem perguntas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Como recebo o material?</div>
+        <div class="faq-a">Imediatamente após o pagamento, você recebe o acesso por e-mail. Todos os bônus chegam junto.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quanto preciso ter de budget pra anunciar?</div>
+        <div class="faq-a">Você pode começar com R$10 por dia. O ebook explica como configurar um orçamento sustentável desde o início.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quais formas de pagamento?</div>
+        <div class="faq-a">Cartão de crédito ou Pix.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">O preço vai subir mesmo?</div>
+        <div class="faq-a">Sim. R$27,90 é o preço de lançamento por 7 dias. Depois vai para R$97.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="tag tag-yellow">Última chance</div>
+    <h2>VOCÊ TEM<br>DUAS<br>ESCOLHAS</h2>
+    <p style="margin:20px auto 32px; max-width:460px">
+      Continuar sem saber como atrair clientes no digital — ou pegar esse ebook por <strong style="color:var(--white)">R$27,90</strong> e lançar sua campanha ainda essa semana.
+    </p>
+    <a href="https://chk.eduzz.com/39VK8D67WR" class="btn-cta" style="max-width:480px; margin:0 auto 10px">GARANTIR MEU ACESSO POR R$27,90 — 6x de R$5,07 →</a>
+    <p class="btn-micro"><span>✓ Acesso imediato</span> &nbsp;•&nbsp; <span>✓ Garantia 7 dias</span> &nbsp;•&nbsp; Sobe para R$97 em 7 dias</p>
+  </div>
+</section>
+
+<!-- PS -->
+<div class="ps-block">
+  <div class="container">
+    <p class="ps-text">
+      <strong>PS:</strong> Se você chegou até aqui, já sabe que precisa disso. O ebook sai por <strong>R$27,90 por apenas 7 dias</strong>. Depois vai para R$97. Eu testei esse método na minha própria empresa e agora estou colocando nas suas mãos por menos do que um almoço. Você só tem a ganhar.
+    </p>
+    <a href="https://chk.eduzz.com/39VK8D67WR" class="btn-cta" style="max-width:400px; margin:0 auto">QUERO MEU ACESSO AGORA →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p style="color:var(--gray); font-size:11px; line-height:1.8">
+      © 2026 Lucas Rosa Dias. Todos os direitos reservados.<br>
+      Ao se inscrever, você concorda com nossa Política de Privacidade e com o tratamento dos seus dados conforme a LGPD.<br>
+      Os resultados mencionados são reais e comprovados por prints do Gerenciador de Anúncios da Meta.
+    </p>
+  </div>
+</footer>
+
+<!-- COUNTDOWN TIMER SCRIPT -->
+<script>
+  // Define a data final: 7 dias a partir de hoje
+  // Para usar uma data fixa de lançamento, substitua por: new Date('2026-05-26T23:59:59')
+  const endDate = new Date();
+  endDate.setDate(endDate.getDate() + 7);
+  endDate.setHours(23, 59, 59, 0);
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = endDate - now;
+    if (diff <= 0) {
+      document.getElementById('days').textContent = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('mins').textContent = '00';
+      document.getElementById('secs').textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const s = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('days').textContent = String(d).padStart(2,'0');
+    document.getElementById('hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('secs').textContent = String(s).padStart(2,'0');
+  }
+  updateTimer();
+  setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>
